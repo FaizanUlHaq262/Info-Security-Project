@@ -199,7 +199,7 @@ def login():
 
             # Generate OTP
             otp = generate_otp()
-            otp_expiry = datetime.now() + timedelta(minutes=10)
+            otp_expiry = datetime.now() + timedelta(minutes=1)
 
             # Update user with OTP details
             conn.execute('''
