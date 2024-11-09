@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OTP Verification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class="flashes">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <div class="login-box">
+        <p>Enter OTP</p>
+        <form method="POST" action="{{ url_for('verify_otp') }}">
+            <div class="user-box">
+                <input required="" name="otp" type="text" pattern="\d{6}" maxlength="6">
+                <label>One-Time Password</label>
+            </div>
+            <button type="submit">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Verify
+            </button>
+        </form>
+        <p>Didn't receive the OTP? <a href="{{ url_for('resend_otp') }}" class="a2">Resend OTP</a></p>
+    </div>
+</div>
+</body>
+</html>
